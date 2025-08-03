@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _filter: {fileID: 666207602}
-  _scale: 5.58
+  _scale: 2.94
   _height: 0.5
   _offset: {x: 90.48, y: 100}
 --- !u!4 &1122527078
