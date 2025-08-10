@@ -28,7 +28,7 @@ public class MountainGenerator : MonoBehaviour
     private float GetHeight(float y)
     {
         float uai = y;
-        float angleDeg = UnityEngine.Random.Range(67.5f, 112.5f);
+        float angleDeg = Random.Range(67.5f, 112.5f);
         
         float angleRad = angleDeg * Mathf.Deg2Rad;
         float x = uai * Mathf.Cos(angleRad) / Mathf.Sin(angleRad);
