@@ -1,7 +1,13 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DoorScript : MonoBehaviour
 {
+    public static readonly Dictionary<string, DoorScript> AllDoors = new Dictionary<string, DoorScript>();
+    
+    public string[] allTargets;
     public string doorID;
     public bool isActive;
     public float activationChance;
@@ -9,22 +15,28 @@ public class DoorScript : MonoBehaviour
     public GameObject inactiveVisual;
     public EntranceScript entrance;
 
-    void Start()
+    void Awake()
     {
         entrance = FindAnyObjectByType<EntranceScript>();
-        // Generate unique ID if not set
-        if (string.IsNullOrEmpty(doorID))
-        {
-            doorID = System.Guid.NewGuid().ToString();
-        }
         
-        // Randomize activation
+        if (string.IsNullOrEmpty(doorID))
+            doorID = System.Guid.NewGuid().ToString();
+        
+        if (!AllDoors.ContainsKey(doorID))
+            AllDoors.Add(doorID, this);
+        Debug.Log(AllDoors[doorID]);
+        
         RandomizeActivation();
         
-        // Update visuals
         UpdateVisuals();
 
         entrance.SecondStart();
+    }
+
+    void OnDestroy()
+    {
+        if (AllDoors.ContainsKey(doorID))
+            AllDoors.Remove(doorID);
     }
 
     public void RandomizeActivation()
