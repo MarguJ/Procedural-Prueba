@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,7 @@ public class DoorScript : MonoBehaviour
 {
     public static readonly Dictionary<string, DoorScript> AllDoors = new Dictionary<string, DoorScript>();
     
-    public string[] allTargets;
+    public static string[] allTargets;
     public string doorID;
     public bool isActive;
     public float activationChance;
@@ -24,7 +25,6 @@ public class DoorScript : MonoBehaviour
         
         if (!AllDoors.ContainsKey(doorID))
             AllDoors.Add(doorID, this);
-        Debug.Log(AllDoors[doorID]);
         
         RandomizeActivation();
         
@@ -57,5 +57,15 @@ public class DoorScript : MonoBehaviour
 
         if (inactiveVisual != null)
             inactiveVisual.SetActive(!isActive);
+    }
+
+    public void GetAllIDs()
+    {
+        var quantTargets = AllDoors.Count;
+        for (int i = 0; i < quantTargets; i++)
+        { 
+            allTargets.AddRange(doorID);
+            Debug.Log(allTargets[i]);
+        }
     }
 }

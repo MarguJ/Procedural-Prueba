@@ -12,12 +12,8 @@ public class EntranceScript : MonoBehaviour
     public void SecondStart()
     {
         rDoorScript = GetComponent<DoorScript>();
-        var quantTargets = DoorScript.AllDoors.Count;
-        for (int i = 0; i < quantTargets; i++)
-        {
-            rDoorScript.allTargets.AddRange(rDoorScript.doorID);
-            Debug.Log(rDoorScript.allTargets[i]);
-        }
+        rDoorScript.GetAllIDs();
+        
         
         if (!DoorScript.AllDoors.ContainsKey(targetDoorID))
         {
