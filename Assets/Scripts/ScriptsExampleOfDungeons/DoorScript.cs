@@ -1,60 +1,70 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DoorScript : MonoBehaviour
+namespace ScriptsExampleOfDungeons
 {
-    public Dictionary<string, DoorScript> allDoors = new();
-
-    public string doorID;
-    public bool isActive;
-    public float activationChance;
-    public GameObject activeVisual;
-    public GameObject inactiveVisual;
-    public EntranceScript entrance;
-
-    void Awake()
+    public class DoorScript : MonoBehaviour
     {
-        entrance = FindAnyObjectByType<EntranceScript>();
+        public static Dictionary<string, DoorScript> allDoors = new();
 
-        if (string.IsNullOrEmpty(doorID))
-            doorID = System.Guid.NewGuid().ToString();
+        public string doorID;
+        private const int maxDoors = 4;
+        public bool isActive;
+        public float activationChance;
+        public GameObject activeVisual;
+        public GameObject inactiveVisual;
+        public EntranceScript entrance;
 
-        if (!allDoors.ContainsKey(doorID))
-            allDoors.Add(doorID, this);
+        void Awake()
+        {
+            entrance = FindAnyObjectByType<EntranceScript>();
 
-        RandomizeActivation();
+            if (string.IsNullOrEmpty(doorID))
+                doorID = System.Guid.NewGuid().ToString();
 
-        UpdateVisuals();
+            if (!allDoors.ContainsKey(doorID))
+            {
+                allDoors.Add(doorID, this);
+            }
 
-        entrance.SecondStart();
-    }
+            RandomizeActivation();
 
-    void OnDestroy()
-    {
-        if (allDoors.ContainsKey(doorID))
-            allDoors.Remove(doorID);
-    }
+            UpdateVisuals();
 
-    public void RandomizeActivation()
-    {
-        isActive = Random.Range(0f, 1f) <= activationChance;
-    }
+            if (allDoors.Count >= maxDoors)
+            {
+                for (int i = 1; i <= maxDoors; i++)
+                {
+                    entrance.SecondStart(i);
+                }
+            }
+        }
 
-    public void SetActivation(bool active)
-    {
-        isActive = active;
-        UpdateVisuals();
-    }
+        void OnDestroy()
+        {
+            if (allDoors.ContainsKey(doorID))
+                allDoors.Remove(doorID);
+        }
 
-    void UpdateVisuals()
-    {
-        if (activeVisual != null)
-            activeVisual.SetActive(isActive);
+        public void RandomizeActivation()
+        {
+            isActive = Random.Range(0f, 1f) <= activationChance;
+        }
 
-        if (inactiveVisual != null)
-            inactiveVisual.SetActive(!isActive);
+        public void SetActivation(bool active)
+        {
+            isActive = active;
+            UpdateVisuals();
+        }
+
+        void UpdateVisuals()
+        {
+            if (activeVisual != null)
+                activeVisual.SetActive(isActive);
+
+            if (inactiveVisual != null)
+                inactiveVisual.SetActive(!isActive);
+        }
     }
 }
