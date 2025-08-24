@@ -6,9 +6,8 @@ using Random = UnityEngine.Random;
 
 public class DoorScript : MonoBehaviour
 {
-    public static readonly Dictionary<string, DoorScript> AllDoors = new Dictionary<string, DoorScript>();
-    
-    public static string[] allTargets;
+    public Dictionary<string, DoorScript> allDoors = new();
+
     public string doorID;
     public bool isActive;
     public float activationChance;
@@ -19,15 +18,15 @@ public class DoorScript : MonoBehaviour
     void Awake()
     {
         entrance = FindAnyObjectByType<EntranceScript>();
-        
+
         if (string.IsNullOrEmpty(doorID))
             doorID = System.Guid.NewGuid().ToString();
-        
-        if (!AllDoors.ContainsKey(doorID))
-            AllDoors.Add(doorID, this);
-        
+
+        if (!allDoors.ContainsKey(doorID))
+            allDoors.Add(doorID, this);
+
         RandomizeActivation();
-        
+
         UpdateVisuals();
 
         entrance.SecondStart();
@@ -35,8 +34,8 @@ public class DoorScript : MonoBehaviour
 
     void OnDestroy()
     {
-        if (AllDoors.ContainsKey(doorID))
-            AllDoors.Remove(doorID);
+        if (allDoors.ContainsKey(doorID))
+            allDoors.Remove(doorID);
     }
 
     public void RandomizeActivation()
@@ -57,15 +56,5 @@ public class DoorScript : MonoBehaviour
 
         if (inactiveVisual != null)
             inactiveVisual.SetActive(!isActive);
-    }
-
-    public void GetAllIDs()
-    {
-        var quantTargets = AllDoors.Count;
-        for (int i = 0; i < quantTargets; i++)
-        { 
-            allTargets.AddRange(doorID);
-            Debug.Log(allTargets[i]);
-        }
     }
 }
