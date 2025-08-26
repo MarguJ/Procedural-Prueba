@@ -31,7 +31,10 @@ namespace ScriptsExampleOfDungeons
             RandomizeActivation();
 
             UpdateVisuals();
+        }
 
+        void Start()
+        {
             if (allDoors.Count >= maxDoors)
             {
                 for (int i = 1; i <= maxDoors; i++)
@@ -40,6 +43,7 @@ namespace ScriptsExampleOfDungeons
                 }
             }
         }
+        
 
         void OnDestroy()
         {
