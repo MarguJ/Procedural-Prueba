@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7758220656907947627}
-  - component: {fileID: 7758684879578806708}
   m_Layer: 0
   m_Name: HallwayPrefab
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   - {fileID: 7879337859863754987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7758684879578806708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961285130563708812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e19e21d5a420a3458add07e789fdb19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallwayP: {fileID: 961285130563708812}
-  door: {fileID: 0}
 --- !u!1 &2064462964597147455
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +140,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5498198826415680749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6986092212491629397}
+  m_Layer: 0
+  m_Name: Exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6986092212491629397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498198826415680749}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7879337859863754987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6104855795496137245
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +180,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7879337859863754987}
-  - component: {fileID: 8453375098032621350}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Untagged
@@ -186,19 +201,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7364237128042330077}
+  - {fileID: 6986092212491629397}
   m_Father: {fileID: 7758220656907947627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8453375098032621350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6104855795496137245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e19e21d5a420a3458add07e789fdb19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallwayP: {fileID: 961285130563708812}
-  door: {fileID: 0}
