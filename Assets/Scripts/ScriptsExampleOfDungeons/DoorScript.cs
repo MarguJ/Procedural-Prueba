@@ -9,7 +9,7 @@ namespace ScriptsExampleOfDungeons
         public static Dictionary<string, DoorScript> allDoors = new();
 
         public string doorID;
-        private const int maxDoors = 4;
+        private const int maxDoors = 8;
         public bool isActive;
         public float activationChance;
         public GameObject activeVisual;
@@ -31,10 +31,7 @@ namespace ScriptsExampleOfDungeons
             RandomizeActivation();
 
             UpdateVisuals();
-        }
-
-        void Start()
-        {
+            
             if (allDoors.Count >= maxDoors)
             {
                 for (int i = 1; i <= maxDoors; i++)
@@ -43,7 +40,6 @@ namespace ScriptsExampleOfDungeons
                 }
             }
         }
-        
 
         void OnDestroy()
         {

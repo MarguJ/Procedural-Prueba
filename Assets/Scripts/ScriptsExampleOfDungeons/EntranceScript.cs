@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ScriptsExampleOfDungeons
@@ -17,8 +18,8 @@ namespace ScriptsExampleOfDungeons
                 Debug.Log(doorScript.doorID);
                 GameObject child = hallwayP.transform.Find("Entrance").gameObject;
                 Vector3 pos = doorScript.transform.position;
-                pos.x -= (child.transform.localPosition.x)*3;
-                Instantiate(hallwayP, pos, Quaternion.identity);
+                Quaternion rot = doorScript.transform.rotation;
+                Instantiate(hallwayP, pos, rot);
             }
         }
     }
