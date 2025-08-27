@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ScriptsExampleOfDungeons
@@ -16,10 +15,10 @@ namespace ScriptsExampleOfDungeons
             if (doorScript.isActive)
             {
                 Debug.Log(doorScript.doorID);
-                GameObject child = hallwayP.transform.Find("Entrance").gameObject;
+                GameObject child = GameObject.Find("Entrance").gameObject;
                 Vector3 pos = doorScript.transform.position;
                 Quaternion rot = doorScript.transform.rotation;
-                Instantiate(hallwayP, pos, rot);
+                Instantiate(child, pos, rot);
             }
         }
     }
