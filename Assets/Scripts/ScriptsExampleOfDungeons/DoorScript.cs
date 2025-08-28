@@ -32,21 +32,16 @@ namespace ScriptsExampleOfDungeons
             RandomizeActivation();
 
             UpdateVisuals();
-
-            
-            GameObject door = gameObject;
-            doors.Add(door);
             
             if (allDoors.Count >= maxDoors)
             {
-                for (int i = 0; i < maxDoors; i++)
+                int index = 0;
+                foreach (var d in allDoors.Values)
                 {
-                    Debug.Log(i);
-                    foreach (var dor in doors)
-                    {
-                        dor.name = ("Door" + i);
-                    } //esto no va a acá
-                    entrance.SecondStart(i);
+                    d.gameObject.name = "Door" + index;
+                    Debug.Log(d.gameObject.name);
+                    entrance.SecondStart(index);
+                    index++;
                 }
             }
         }
