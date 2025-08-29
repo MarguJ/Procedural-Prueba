@@ -206,7 +206,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorGameObject: {fileID: 0}
-  hallWayExit: {fileID: 0}
+  childEntra: {fileID: 0}
+  childExit: {fileID: 0}
+  exitScript: {fileID: 0}
+  childHall: {fileID: 0}
 --- !u!4 &1085006225
 Transform:
   m_ObjectHideFlags: 0
@@ -233,6 +236,10 @@ PrefabInstance:
     - target: {fileID: 961285130563708812, guid: 89fefc005c5ac094a9613c37c8b84af6, type: 3}
       propertyPath: m_Name
       value: HallwayPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498198826415680749, guid: 89fefc005c5ac094a9613c37c8b84af6, type: 3}
+      propertyPath: m_Name
+      value: Exit0
       objectReference: {fileID: 0}
     - target: {fileID: 7758220656907947627, guid: 89fefc005c5ac094a9613c37c8b84af6, type: 3}
       propertyPath: m_LocalPosition.x

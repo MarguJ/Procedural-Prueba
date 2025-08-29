@@ -39,8 +39,12 @@ namespace ScriptsExampleOfDungeons
                 {
                     d.gameObject.name = "Door" + index;
                     entrance.SecondStart(index);
-                    entrance.SpawnHallwayAndRooms(index);
                     index++;
+                }
+
+                for (int i = 0; i < allDoors.Count; i++)
+                {
+                    entrance.SpawnHallwayAndRooms(i);
                 }
             }
         }
