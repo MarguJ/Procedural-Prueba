@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e90cc86660434f8ecb5d92e5a83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorID: 4
+  doorID: 
   isActive: 1
   activationChance: 1
   activeVisual: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e90cc86660434f8ecb5d92e5a83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorID: 2
+  doorID: 
   isActive: 1
   activationChance: 1
   activeVisual: {fileID: 0}
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e90cc86660434f8ecb5d92e5a83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorID: 3
+  doorID: 
   isActive: 1
   activationChance: 1
   activeVisual: {fileID: 0}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e90cc86660434f8ecb5d92e5a83f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorID: 1
+  doorID: 
   isActive: 1
   activationChance: 1
   activeVisual: {fileID: 0}

@@ -9,13 +9,12 @@ namespace ScriptsExampleOfDungeons
     {
         public static Dictionary<string, DoorScript> allDoors = new();
         public string doorID;
-        private const int maxDoors = 8;
+        public const int maxDoors = 12;
         public bool isActive;
         public float activationChance;
         public GameObject activeVisual;
         public GameObject inactiveVisual;
         public EntranceScript entrance;
-        private List<GameObject> doors = new List<GameObject>();
 
         void Awake()
         {
@@ -39,8 +38,8 @@ namespace ScriptsExampleOfDungeons
                 foreach (var d in allDoors.Values)
                 {
                     d.gameObject.name = "Door" + index;
-                    Debug.Log(d.gameObject.name);
                     entrance.SecondStart(index);
+                    entrance.SpawnHallwayAndRooms(index);
                     index++;
                 }
             }
