@@ -4,16 +4,17 @@ using System.Collections.Generic;
 public class ExitScript : MonoBehaviour
 {
     public static Dictionary<string, ExitScript> allExits = new();
+    public string exitID;
     
-    public void SetExitNumber(int exitNumber)
+    public void SetExitNumber()
     {
-        gameObject.tag = "Untagged";
-        Debug.Log(exitNumber);
-        exitNumber += 1;
-        gameObject.name = "Exit" + exitNumber;
-        if (!allExits.ContainsKey(gameObject.name))
+        if (string.IsNullOrEmpty(exitID))
+            exitID = System.Guid.NewGuid().ToString();
+        //Debug.Log(exitNumber);
+        if (!allExits.ContainsKey(exitID))
         {
             allExits.Add(gameObject.name, this);
+            Debug.Log(allExits[gameObject.name].exitID);
         }
     }
 }

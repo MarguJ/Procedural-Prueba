@@ -9,7 +9,7 @@ namespace ScriptsExampleOfDungeons
     {
         public static Dictionary<string, DoorScript> allDoors = new();
         public string doorID;
-        public const int maxDoors = 12;
+        public int maxDoors;
         public bool isActive;
         public float activationChance;
         public GameObject activeVisual;
@@ -28,6 +28,8 @@ namespace ScriptsExampleOfDungeons
                 allDoors.Add(doorID, this);
             }
 
+            maxDoors = allDoors.Count;
+
             RandomizeActivation();
 
             UpdateVisuals();
@@ -41,11 +43,7 @@ namespace ScriptsExampleOfDungeons
                     entrance.SecondStart(index);
                     index++;
                 }
-
-                for (int i = 0; i < allDoors.Count; i++)
-                {
-                    entrance.SpawnHallwayAndRooms(i);
-                }
+                entrance.SpawnHallwayAndRooms();
             }
         }
 
