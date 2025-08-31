@@ -34,18 +34,19 @@ namespace ScriptsExampleOfDungeons
                 Vector3 pos = doorGameObject.transform.position;
                 Quaternion rot = doorGameObject.transform.rotation;
                 Instantiate(childHall, pos, rot);
-                exitScript.SetExitNumber(doorNumber);
             }
         }
 
-        public void SpawnHallwayAndRooms(int exitNumber)
+        public void SpawnHallwayAndRooms()
         {
-            //Debug.Log("Spawning" + exitNumber);
-            GameObject childHall2 = GameObject.Find("Entrance");
-            childExit = GameObject.Find("Exit"+exitNumber);
-            Vector3 pos = childExit.transform.position;
-            Quaternion rot = childExit.transform.rotation;
-            Instantiate(childHall2, pos, rot);
+            foreach (var exit in ExitScript.allExits.Values)
+            {
+                exitScript.SetExitNumber();
+                GameObject childHall2 = GameObject.Find("Entrance");
+                Vector3 pos = exit.transform.position;
+                Quaternion rot = exit.transform.rotation;
+                Instantiate(childHall2, pos, rot);
+            }
         }
     }
 }
