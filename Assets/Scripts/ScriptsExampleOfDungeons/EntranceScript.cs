@@ -32,39 +32,15 @@ namespace ScriptsExampleOfDungeons
                 }
                 Vector3 pos = doorGameObject.transform.position;
                 Quaternion rot = doorGameObject.transform.rotation;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                Instantiate(childHall, pos, rot);
-                exitScript.SetExitNumber(doorNumber);
-=======
+
                 GameObject uniqueHall = Instantiate(childHall, pos, rot);
                 exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
                 ToSetExitNumber();
->>>>>>> Stashed changes
-=======
-                GameObject uniqueHall = Instantiate(childHall, pos, rot);
-                exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
-                ToSetExitNumber();
->>>>>>> Stashed changes
-=======
-                GameObject uniqueHall = Instantiate(childHall, pos, rot);
-                exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
-                ToSetExitNumber();
->>>>>>> Stashed changes
             }
         }
 
         public void SpawnHallwayAndRooms(int exitNumber)
         {
-<<<<<<< Updated upstream
-            //Debug.Log("Spawning" + exitNumber);
-            GameObject childHall2 = GameObject.Find("Entrance");
-            childExit = GameObject.Find("Exit"+exitNumber);
-            Vector3 pos = childExit.transform.position;
-            Quaternion rot = childExit.transform.rotation;
-            Instantiate(childHall2, pos, rot);
-=======
             foreach (var exit in ExitScript.allExits.Values)
             {
                 GameObject childHall2 = GameObject.Find("Entrance");
@@ -74,19 +50,7 @@ namespace ScriptsExampleOfDungeons
                 Debug.Log(exit.transform.rotation);
                 Instantiate(childHall2, pos, rot);
             }
->>>>>>> Stashed changes
         }
-
-        public void ToSetExitNumber()
-        {
-            exitScript.SetExitNumber();
-        }
-
-        public void ToSetExitNumber()
-        {
-            exitScript.SetExitNumber();
-        }
-
         public void ToSetExitNumber()
         {
             exitScript.SetExitNumber();
