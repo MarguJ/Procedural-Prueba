@@ -9,19 +9,7 @@ namespace ScriptsExampleOfDungeons
     {
         public static Dictionary<string, DoorScript> allDoors = new();
         public string doorID;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        public const int maxDoors = 12;
-=======
         private static int maxDoors = 4;
->>>>>>> Stashed changes
-=======
-        private static int maxDoors = 4;
->>>>>>> Stashed changes
-=======
-        private static int maxDoors = 4;
->>>>>>> Stashed changes
         public bool isActive;
         public float activationChance;
         public GameObject activeVisual;
