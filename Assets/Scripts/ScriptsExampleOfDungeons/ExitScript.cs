@@ -8,6 +8,7 @@ public class ExitScript : MonoBehaviour
     public void SetExitNumber(int exitNumber)
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         gameObject.tag = "Untagged";
         Debug.Log(exitNumber);
         exitNumber += 1;
@@ -15,6 +16,12 @@ public class ExitScript : MonoBehaviour
         if (!allExits.ContainsKey(gameObject.name))
         {
             allExits.Add(gameObject.name, this);
+=======
+        exitID = System.Guid.NewGuid().ToString();
+        if (!allExits.ContainsKey(exitID))
+        {
+            allExits.Add(exitID, this);
+>>>>>>> Stashed changes
 =======
         exitID = System.Guid.NewGuid().ToString();
         if (!allExits.ContainsKey(exitID))
