@@ -9,7 +9,11 @@ namespace ScriptsExampleOfDungeons
     {
         public static Dictionary<string, DoorScript> allDoors = new();
         public string doorID;
+<<<<<<< Updated upstream
         public const int maxDoors = 12;
+=======
+        private static int maxDoors = 4;
+>>>>>>> Stashed changes
         public bool isActive;
         public float activationChance;
         public GameObject activeVisual;
@@ -32,7 +36,7 @@ namespace ScriptsExampleOfDungeons
 
             UpdateVisuals();
             
-            if (allDoors.Count >= maxDoors)
+            if (allDoors.Count == maxDoors)
             {
                 int index = 0;
                 foreach (var d in allDoors.Values)
