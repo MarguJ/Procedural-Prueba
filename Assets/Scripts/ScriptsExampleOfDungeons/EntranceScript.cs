@@ -34,8 +34,14 @@ namespace ScriptsExampleOfDungeons
                 Quaternion rot = doorGameObject.transform.rotation;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 Instantiate(childHall, pos, rot);
                 exitScript.SetExitNumber(doorNumber);
+=======
+                GameObject uniqueHall = Instantiate(childHall, pos, rot);
+                exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
+                ToSetExitNumber();
+>>>>>>> Stashed changes
 =======
                 GameObject uniqueHall = Instantiate(childHall, pos, rot);
                 exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
@@ -69,6 +75,11 @@ namespace ScriptsExampleOfDungeons
                 Instantiate(childHall2, pos, rot);
             }
 >>>>>>> Stashed changes
+        }
+
+        public void ToSetExitNumber()
+        {
+            exitScript.SetExitNumber();
         }
 
         public void ToSetExitNumber()
