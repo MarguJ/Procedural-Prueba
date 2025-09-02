@@ -4,15 +4,14 @@ using System.Collections.Generic;
 public class ExitScript : MonoBehaviour
 {
     public static Dictionary<string, ExitScript> allExits = new();
-    public static string exitID;
+    public string exitID;
     
     public void SetExitNumber()
     {
-        exitID = System.Guid.NewGuid().ToString();
         if (!allExits.ContainsKey(exitID))
         {
+            exitID = System.Guid.NewGuid().ToString();
             allExits.Add(exitID, this);
-            
         }
     }
 }

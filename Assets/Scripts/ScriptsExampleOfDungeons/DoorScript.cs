@@ -41,11 +41,7 @@ namespace ScriptsExampleOfDungeons
                     entrance.SecondStart(index);
                     index++;
                 }
-
-                for (int i = 0; i < allDoors.Count; i++)
-                {
-                    entrance.SpawnHallwayAndRooms(i);
-                }
+                entrance.SpawnHallwayAndRooms();
             }
         }
 
