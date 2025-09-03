@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ScriptsExampleOfDungeons
@@ -7,15 +9,16 @@ namespace ScriptsExampleOfDungeons
     {
         public GameObject doorGameObject;
         public GameObject uniqueHall;
-        public ExitScript exitScript;
-        public GameObject childHall;
-        private int maxOfRoomSpawn = 9;
-        private int minOfRoomSpawn = 5;
-        private int quantityOfRooms;
-        private int roomHallwayIntersection;
-        private float roomChance;
-        private float intersectionChance;
-        
+        public ExitScript exitScript; 
+        public GameObject entrance;
+        public GameObject intersection;
+        public GameObject room;
+        private readonly int _maxOfRoomSpawn = 9;
+        private readonly int _minOfRoomSpawn = 5;
+        private int _quantityOfRooms;
+        private int _roomHallwayIntersection;
+        private float _roomChance;
+        private float _intersectionChance;
         
         public void SecondStart(int doorNumber)
         {
@@ -23,14 +26,9 @@ namespace ScriptsExampleOfDungeons
             DoorScript doorScript = doorGameObject.GetComponentInChildren<DoorScript>();
             if (doorScript.isActive)
             {
-                childHall = GameObject.Find("Entrance");
-                if (childHall == null)
-                {
-                    Debug.LogError("No Entrance found");
-                }
                 Vector3 pos = doorGameObject.transform.position;
                 Quaternion rot = doorGameObject.transform.rotation;
-                uniqueHall = Instantiate(childHall, pos, rot);
+                uniqueHall = Instantiate(entrance, pos, rot);
                 exitScript = uniqueHall.GetComponentInChildren<ExitScript>();
                 ToSetExitNumber();
             }
@@ -40,10 +38,9 @@ namespace ScriptsExampleOfDungeons
         {
             foreach (var exit in ExitScript.allExits.Values)
             {
-                GameObject childHall2 = GameObject.Find("Entrance");
                 Vector3 pos = exit.transform.position;
                 Quaternion rot = exit.transform.rotation;
-                InstantiateFunction(childHall2, pos, rot);
+                InstantiateFunction(entrance, pos, rot);
             }
             SpawnHallWaysUntilRooms();
         }
@@ -55,28 +52,40 @@ namespace ScriptsExampleOfDungeons
         public void SpawnHallWaysUntilRooms()
         {
             int rooms = 1;
-            quantityOfRooms = Random.Range(minOfRoomSpawn, maxOfRoomSpawn);
-            Debug.Log(quantityOfRooms);
-            while (rooms < quantityOfRooms)
+            _quantityOfRooms = Random.Range(_minOfRoomSpawn, _maxOfRoomSpawn);
+            Debug.Log(_quantityOfRooms);
+            while (rooms < _quantityOfRooms)
             {
                 //registrar a todos los hallways ya creados
                 ToSetExitNumber();
-                //por cada hallway (ForEach)
-                roomHallwayIntersection = Random.Range(1,8);
-                if (roomHallwayIntersection == 1 || roomHallwayIntersection == 2 || roomHallwayIntersection == 3 || roomHallwayIntersection == 4) //Hallway
+                //por cada exit (ForEach)
+                foreach (var exit in ExitScript.allExits.Values)
                 {
-                    Debug.Log("Hallway Generated");
+                    _roomHallwayIntersection = Random.Range(1,8);
+                    if (_roomHallwayIntersection == 1 || _roomHallwayIntersection == 2 || _roomHallwayIntersection == 3 || _roomHallwayIntersection == 4) //Hallway
+                    {
+                        //Debug.Log("Hallway Generated");
+                        Vector3 pos = exit.transform.position;
+                        Quaternion rot = exit.transform.rotation;
+                        InstantiateFunction(entrance, pos, rot);
+                    }
+                    else if (_roomHallwayIntersection == 5 || _roomHallwayIntersection == 6) //Intersection
+                    {
+                        //Debug.Log("Intersection Generated");
+                        Vector3 pos = exit.transform.position;
+                        Quaternion rot = exit.transform.rotation;
+                        InstantiateFunction(intersection, pos, rot);
+                    }
+                    else if (_roomHallwayIntersection == 7) //Room
+                    {
+                        //Debug.Log("Room Generated");
+                        Vector3 pos = exit.transform.position;
+                        Quaternion rot = exit.transform.rotation;
+                        InstantiateFunction(room, pos, rot);
+                        rooms++;
+                    }
+                    //Que haya una posibilidad de que un room o un hallway o una intersection aparezca, si aparece un room sumar +1 a rooms
                 }
-                else if (roomHallwayIntersection == 5 || roomHallwayIntersection == 6) //Intersection
-                {
-                    Debug.Log("Intersection Generated");
-                }
-                else if (roomHallwayIntersection == 7) //Room
-                {
-                    Debug.Log("Room Generated");
-                    rooms++;
-                }
-                //Que haya una posibilidad de que un room o un hallway o una intersection aparezca, si aparece un room sumar +1 a rooms
             }
         }
 
