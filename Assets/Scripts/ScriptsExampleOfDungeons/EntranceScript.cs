@@ -82,7 +82,6 @@ namespace ScriptsExampleOfDungeons
                             InstantiateFunction(room, pos, rot);
                             rooms++;
                         }
-                        ToSetExitNumber();
                     }
                 }
             }

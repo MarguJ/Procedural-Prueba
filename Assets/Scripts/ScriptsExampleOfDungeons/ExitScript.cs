@@ -18,7 +18,7 @@ public class ExitScript : MonoBehaviour
     {
         if (isActive)
         {
-            if (!allExits.ContainsKey(exitID))
+            if (allExits.ContainsKey(exitID))
             {
                 exitID = System.Guid.NewGuid().ToString();
                 allExits.Add(exitID, this);
