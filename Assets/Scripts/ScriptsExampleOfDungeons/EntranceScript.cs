@@ -44,6 +44,7 @@ namespace ScriptsExampleOfDungeons
             }
             SpawnHallWaysUntilRooms();
         }
+
         public void ToSetExitNumber()
         {
             exitScript.SetExitNumber();

@@ -13,6 +13,7 @@ public class ExitScript : MonoBehaviour
     public void Awake()
     {
         isActive = Random.Range(0f, 1f) <= activationChance;
+        Debug.Log(isActive);
     }
     public void SetExitNumber()
     {
