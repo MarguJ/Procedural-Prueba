@@ -153,7 +153,7 @@ MonoBehaviour:
   exitScript: {fileID: 0}
   entrance: {fileID: 1954212035344150671, guid: 94089c546576999458fa09bbd529e39f, type: 3}
   intersection: {fileID: 8106151275122085428, guid: 03bd90ae73100014b9a6663b96ca8291, type: 3}
-  room: {fileID: 6736121305208999890, guid: 9a5e2116d03cb0946a4aa3dcabd75e8a, type: 3}
+  room: {fileID: 8106151275122085428, guid: 86894b9f5ef5f9347a5c624cdd954e1f, type: 3}
 --- !u!4 &1085006225
 Transform:
   m_ObjectHideFlags: 0
@@ -447,12 +447,20 @@ PrefabInstance:
       propertyPath: isActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2274418477340490322, guid: 0523f256237ac0d4f8592775a3880a28, type: 3}
+      propertyPath: spawnTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6236622745056151249, guid: 0523f256237ac0d4f8592775a3880a28, type: 3}
       propertyPath: isActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6579123139144008747, guid: 0523f256237ac0d4f8592775a3880a28, type: 3}
       propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882497550295380282, guid: 0523f256237ac0d4f8592775a3880a28, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827691087740851895, guid: 0523f256237ac0d4f8592775a3880a28, type: 3}

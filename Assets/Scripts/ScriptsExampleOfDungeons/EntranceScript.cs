@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Serialization;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
@@ -77,28 +78,28 @@ namespace ScriptsExampleOfDungeons
                 {
                     if (exit != null && exit.isActive && rooms < _quantityOfRooms)
                     {
-                        _roomHallwayIntersection = Random.Range(1, 10);
+                        _roomHallwayIntersection = Random.Range(1, 13);
                         
                         Vector3 pos = exit.transform.position;
                         Quaternion rot = exit.transform.rotation;
                         
-                        if (_roomHallwayIntersection >= 1 && _roomHallwayIntersection <= 6) // Hallway
+                        if (_roomHallwayIntersection >= 1 && _roomHallwayIntersection <= 9) // Hallway
                         {
-                            Debug.Log("Spawning Hallway");
+                            //Debug.Log("Spawning Hallway");
                             InstantiateFunction(entrance, pos, rot);
                             exit.DeactivateExit();
                             spawnedThisIteration = true;
                         }
-                        else if (_roomHallwayIntersection >= 7 && _roomHallwayIntersection <= 8) // Intersection
+                        else if (_roomHallwayIntersection >= 10 && _roomHallwayIntersection <= 11) // Intersection
                         {
-                            Debug.Log("Spawning Intersection");
+                            //Debug.Log("Spawning Intersection");
                             InstantiateFunction(intersection, pos, rot);
                             exit.DeactivateExit();
                             spawnedThisIteration = true;
                         }
-                        else if (_roomHallwayIntersection == 9) // Room
+                        else if (_roomHallwayIntersection == 12) // Room
                         {
-                            Debug.Log("Spawning Room");
+                            //Debug.Log("Spawning Room");
                             InstantiateFunction(room, pos, rot);
                             exit.DeactivateExit();
                             rooms++;

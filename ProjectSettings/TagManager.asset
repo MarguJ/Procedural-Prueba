@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Excluido
+  - DungeonPiece
   layers:
   - Default
   - TransparentFX
