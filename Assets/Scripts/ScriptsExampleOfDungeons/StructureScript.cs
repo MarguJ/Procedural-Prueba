@@ -9,7 +9,6 @@ namespace ScriptsExampleOfDungeons
         void Awake()
         {
             spawnTime = Time.time;
-            Debug.Log(spawnTime);
         }
 
         void OnTriggerEnter(Collider other)
