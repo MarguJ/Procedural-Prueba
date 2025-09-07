@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
@@ -15,15 +16,17 @@ namespace ScriptsExampleOfDungeons
         public GameObject entrance;
         public GameObject intersection;
         public GameObject room;
+        public int rooms;
+        public int quantityOfRooms;
+        private int _roomHallwayIntersection;
         private readonly int _maxOfRoomSpawn = 9;
         private readonly int _minOfRoomSpawn = 5;
-        private int _quantityOfRooms;
-        private int _roomHallwayIntersection;
         private float _roomChance;
         private float _intersectionChance;
         
-        private int maxIterations = 1000;
         
+        private int maxIterations = 1000;
+
         void Start()
         {
             ExitScript.ClearAllExits();
@@ -63,11 +66,11 @@ namespace ScriptsExampleOfDungeons
 
         public void SpawnHallWaysUntilRooms()
         {
-            int rooms = 0;
+            rooms = 0;
             int iterations = 0;
-            _quantityOfRooms = Random.Range(_minOfRoomSpawn, _maxOfRoomSpawn);
+            quantityOfRooms = Random.Range(_minOfRoomSpawn, _maxOfRoomSpawn);
             
-            while (rooms < _quantityOfRooms && iterations < maxIterations)
+            while (rooms < quantityOfRooms && iterations < maxIterations)
             {
                 iterations++;
                 
@@ -76,7 +79,7 @@ namespace ScriptsExampleOfDungeons
                 
                 foreach (var exit in exitsCopy)
                 {
-                    if (exit != null && exit.isActive && rooms < _quantityOfRooms)
+                    if (exit != null && exit.isActive && rooms < quantityOfRooms)
                     {
                         _roomHallwayIntersection = Random.Range(1, 13);
                         

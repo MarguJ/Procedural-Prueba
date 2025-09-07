@@ -1,22 +1,28 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ScriptsExampleOfDungeons
 {
     public class StructureScript : MonoBehaviour
     {
-        public float spawnTime;
+        public EntranceScript entrance;
 
         void Awake()
         {
-            spawnTime = Time.time;
+            entrance = FindAnyObjectByType<EntranceScript>();
         }
 
-        void OnTriggerEnter(Collider other)
+        void Start()
         {
-            StructureScript otherStruct = other.GetComponent<StructureScript>();
-            if (otherStruct != null)
+            gameObject.tag = "DungeonPiece";
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            Debug.Log("Hay Trigger");
+            if (entrance.rooms == entrance.quantityOfRooms)
             {
-                if (spawnTime > otherStruct.spawnTime)
+                if (other.CompareTag("DungeonPiece"))
                 {
                     Destroy(gameObject);
                 }
