@@ -5,26 +5,43 @@ namespace ScriptsExampleOfDungeons
 {
     public class StructureScript : MonoBehaviour
     {
-        public EntranceScript entrance;
-
-        void Awake()
-        {
-            entrance = FindAnyObjectByType<EntranceScript>();
-        }
-
         void Start()
         {
-            gameObject.tag = "DungeonPiece";
-        }
+            Collider myCol = GetComponent<Collider>();
 
-        private void OnTriggerStay(Collider other)
-        {
-            Debug.Log("Hay Trigger");
-            if (entrance.rooms == entrance.quantityOfRooms)
+            // Buscamos todos los colliders cerca de este objeto
+            Collider[] others = Physics.OverlapBox(
+                myCol.bounds.center,
+                myCol.bounds.extents,
+                transform.rotation
+            );
+
+            foreach (Collider other in others)
             {
-                if (other.CompareTag("DungeonPiece"))
+                if (other != myCol) // ignorar mi propio collider
                 {
-                    Destroy(gameObject);
+                    Vector3 dir;
+                    float distance;
+
+                    // Si hay penetración real entre colliders
+                    if (Physics.ComputePenetration(
+                            myCol, transform.position, transform.rotation,
+                            other, other.transform.position, other.transform.rotation,
+                            out dir, out distance))
+                    {
+                        if (other.CompareTag("Indestructible"))
+                        {
+                            if (distance > 0.5f) // margen para no contar solo el "roce"
+                            {
+                                Destroy(gameObject);
+                                return; // me destruyo, no sigo chequeando
+                            }
+                        }
+                    }
+                    else
+                    {
+                        gameObject.tag = "Indestructible";
+                    }
                 }
             }
         }
