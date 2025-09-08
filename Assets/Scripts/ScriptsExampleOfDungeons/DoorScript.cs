@@ -29,7 +29,6 @@ namespace ScriptsExampleOfDungeons
             }
 
             RandomizeActivation();
-
             UpdateVisuals();
             
             if (allDoors.Count == maxDoors)
@@ -37,11 +36,20 @@ namespace ScriptsExampleOfDungeons
                 int index = 0;
                 foreach (var d in allDoors.Values)
                 {
-                    d.gameObject.name = "Door" + index;
-                    entrance.SecondStart(index);
-                    index++;
+                    if (d != null)
+                    {
+                        d.gameObject.name = "Door" + index;
+                        if (entrance != null)
+                        {
+                            entrance.SecondStart(index);
+                        }
+                        index++;
+                    }
                 }
-                entrance.SpawnHallwayAndRooms();
+                if (entrance != null)
+                {
+                    entrance.SpawnHallwayAndRooms();
+                }
             }
         }
 
@@ -69,6 +77,11 @@ namespace ScriptsExampleOfDungeons
 
             if (inactiveVisual != null)
                 inactiveVisual.SetActive(!isActive);
+        }
+        
+        public static void ClearAllDoors()
+        {
+            allDoors.Clear();
         }
     }
 }
